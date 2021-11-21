@@ -113,7 +113,7 @@ struct personas * ingresar_persona(struct personas *ptr) {
     //---------------------------------------------------------------------------
     printf("Ingrese edad de la persona: ");
     scanf("%d", &persona->edad);
-    while (persona->edad < 0 || persona->edad > 100) {
+    while (persona->edad < 1 || persona->edad > 100) {
         printf("Edad incorrecto!!\n");
         printf("Ingrese nuevamente edad de la persona: ");
         scanf("%d", &persona->edad);
@@ -122,8 +122,8 @@ struct personas * ingresar_persona(struct personas *ptr) {
     dosi = (struct dosis *) malloc(sizeof ( struct dosis));
     printf("Ingrese fecha año de la vacunacion: ");
     scanf("%d", &dosi->fechaAnno);
-    //Toma como inicio vacunación desde 2019 hasta 2021
-    while (dosi->fechaAnno < 2018 || dosi->fechaAnno > 2021) {
+    //Toma como inicio vacunación desde 2020 hasta 2021
+    while (dosi->fechaAnno < 2020 || dosi->fechaAnno > 2021) {
         printf("Año incorrecto!!\n");
         printf("Ingrese nuevamente año de la vacunacion: ");
         scanf("%d", &dosi->fechaAnno);
@@ -301,7 +301,6 @@ void mostrar_primera_dosis(struct personas *ptr) {
             } else {
                 printf("Sexo: Masculino\n");
             }
-            //printf("%s\n", ptr->sexo);
             printf("Edad: %d\n", ptr->edad);
             if (ptr->primera != NULL) {
 
@@ -424,7 +423,7 @@ void mostrar_tercera_dosis(struct personas *ptr) {
 void mostrar_dosis(struct personas *ptr) {
 
     if (ptr == NULL) {
-        printf("No hay personas registradas...");
+        printf("No hay personas registradas...\n");
     } else {
         int opc;
         printf("Motrar según: \n");
@@ -449,7 +448,7 @@ void mostrar_dosis(struct personas *ptr) {
 
 void buscar_sexo(struct personas *ptr) {
     if (ptr == NULL) {
-        printf("No hay personas registradas...");
+        printf("No hay personas registradas...\n");
     } else {
         char sex[1];
         printf("Ingrese condición de sexo (F o M): ");
@@ -507,7 +506,7 @@ void buscar_sexo(struct personas *ptr) {
 void buscar_rut(struct personas *ptr) {
 
     if (ptr == NULL) {
-        printf("No hay personas registradas...");
+        printf("No hay personas registradas...\n");
     } else {
         char rut_buscar[10];
         printf("Ingrese rut a buscar: ");
@@ -557,7 +556,7 @@ void buscar_rut(struct personas *ptr) {
             ptr = ptr->enlace;
         }
 
-        printf("No se encontro Persona");
+        printf("No se encontro Persona\n");
     }
 }
 
@@ -599,12 +598,14 @@ int main() {
             buscar_rut(inicio);
             fflush(stdin);
             getchar();
+        }else if (opcion == 0) {
+            printf("Opción Salida");
         } else {
-            printf("Opción Salida/Incorrecta \n");
+            printf("Opción Incorrecta \n");
         }
 
     } while (opcion != 0);
 
-    return (EXIT_SUCCESS);
+    return (0);
 }
 
