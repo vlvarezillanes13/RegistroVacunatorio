@@ -599,7 +599,6 @@ int main() {
             buscar_rut(inicio);
             fflush(stdin);
             getchar();
-            ;
         } else {
             printf("Opción Salida/Incorrecta \n");
         }
